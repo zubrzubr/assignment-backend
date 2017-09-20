@@ -13,9 +13,25 @@ class TaskListView(ListModelMixin, CreateModelMixin, viewsets.GenericViewSet):
     """
     Task view to get list of all tasks.
     GET, CREATE methods are allowed.
+    Also can urls can be applied, for example:
+    ?is_done=true, ?board_name=TestBoard
     """
     queryset = Task.objects.all()
     serializer_class = TaskBaseSerializer
+
+    def get_queryset(self):
+        is_done_param = self.request.GET.get('is_done')
+        board_name_param = self.request.GET.get('board_name')
+        query_params = {
+            'status': bool(is_done_param),
+        }
+
+        if board_name_param:
+            query_params.update({'board__name': board_name_param})
+        if is_done_param or board_name_param:
+            return self.queryset.filter(**query_params)
+
+        return self.queryset
 
 
 class TaskDetailView(UpdateModelMixin, RetrieveModelMixin, DestroyModelMixin, viewsets.GenericViewSet):
