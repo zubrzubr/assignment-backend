@@ -6,7 +6,7 @@ from rest_framework.mixins import (ListModelMixin, UpdateModelMixin, RetrieveMod
                                    CreateModelMixin)
 
 from task.models import Task
-from task.serializers import TaskListSerializer, TaskDetailSerializer
+from task.serializers import TaskBaseSerializer, TaskDetailSerializer
 
 
 class TaskListView(ListModelMixin, CreateModelMixin, viewsets.GenericViewSet):
@@ -15,7 +15,7 @@ class TaskListView(ListModelMixin, CreateModelMixin, viewsets.GenericViewSet):
     GET, CREATE methods are allowed.
     """
     queryset = Task.objects.all()
-    serializer_class = TaskListSerializer
+    serializer_class = TaskBaseSerializer
 
 
 class TaskDetailView(UpdateModelMixin, RetrieveModelMixin, DestroyModelMixin, viewsets.GenericViewSet):

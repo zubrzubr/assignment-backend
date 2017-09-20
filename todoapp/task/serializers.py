@@ -4,16 +4,18 @@ from rest_framework import serializers
 from task.models import Task
 
 
-class TaskListSerializer(serializers.ModelSerializer):
+class TaskBaseSerializer(serializers.ModelSerializer):
     """
     Task list serializer for TaskListView
     """
+    board = serializers.StringRelatedField()
+
     class Meta:
         model = Task
         fields = ('title', 'status', 'board')
 
 
-class TaskDetailSerializer(serializers.ModelSerializer):
+class TaskDetailSerializer(TaskBaseSerializer):
     """
     Task detail serializer for TaskDetailView
     """

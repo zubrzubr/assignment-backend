@@ -28,6 +28,8 @@ class BoardDetailSerializer(serializers.ModelSerializer):
     """
     Board detail serializer for BoardDetailView
     """
+    board_tasks = serializers.StringRelatedField(many=True)
+
     class Meta:
         model = Board
         fields = ('name', 'board_tasks')
