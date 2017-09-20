@@ -12,7 +12,7 @@ def send_email_notification(email, message):
     Celery task for sending email notification with reminders to users
     """
     send_mail(
-        'You got reminder',
+        settings.EMAIL_TEST_SUBJECT,
         message,
         settings.EMAIL_SENDER,
         [email],

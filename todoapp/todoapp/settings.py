@@ -138,4 +138,5 @@ CELERY_TIMEZONE = TIME_ZONE
 
 # Settings for emails
 EMAIL_SENDER = 'hello@test.com'
+EMAIL_TEST_SUBJECT = 'Test subject'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
