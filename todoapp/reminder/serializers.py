@@ -25,7 +25,9 @@ class ReminderBaseSerializer(serializers.ModelSerializer):
         created = super(ReminderBaseSerializer, self).create(validated_data)
         if created:
             countdown = created.delay * self.SECONDS_COUNT
-            send_email_notification.apply_async(countdown=countdown)
+            send_email_notification.apply_async(
+                kwargs={'email': created.email, 'message': created.text}, countdown=countdown
+            )
         return created
 
 
