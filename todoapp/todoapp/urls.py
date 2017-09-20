@@ -5,5 +5,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^api/v1/todo/', include('board.urls')),
     url(r'^api/v1/todo/', include('task.urls')),
+    url(r'^api/v1/todo/', include('reminder.urls')),
     url(r'^admin/', admin.site.urls),
 ]
