@@ -13,13 +13,6 @@ class BoardListView(ListModelMixin, CreateModelMixin, viewsets.GenericViewSet):
     """
     Board view to get list of all boards and count of tasks in this board.
     GET, CREATE methods are allowed.
-    Response:
-        [
-            {
-                "name": "Test",
-                "todo_count": 2
-            }
-        ]
     """
     queryset = Board.objects.all()
     serializer_class = BoardListSerializer
