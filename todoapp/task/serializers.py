@@ -8,8 +8,6 @@ class TaskBaseSerializer(serializers.ModelSerializer):
     """
     Task list serializer for TaskListView
     """
-    board = serializers.StringRelatedField()
-
     class Meta:
         model = Task
         fields = ('title', 'status', 'board')
@@ -19,6 +17,7 @@ class TaskDetailSerializer(TaskBaseSerializer):
     """
     Task detail serializer for TaskDetailView
     """
+    board = serializers.StringRelatedField()
     class Meta:
         model = Task
         fields = ('title', 'status', 'created_date', 'modified_date', 'board')
