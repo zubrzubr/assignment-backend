@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Project applications
     'board',
     'task',
+    'reminder'
 ]
 
 MIDDLEWARE = [
