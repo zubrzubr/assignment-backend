@@ -42,6 +42,14 @@ celery -A todoapp worker -l info
 
 # Additional information.
 
+### Run tests.
+
+Go to the project folder and simply just run:
+
+```
+pytest
+```
+
 ### API Points.
 
 To get list of all boards and add new board:
