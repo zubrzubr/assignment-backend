@@ -14,6 +14,7 @@ pip install -r requirements.txt
 python manage.py migrate
 ```
 5. Install redis server to make celery works:
+
 Ubuntu:
 ```
 sudo apt install redis-server
